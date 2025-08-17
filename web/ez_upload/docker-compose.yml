@@ -1,0 +1,9 @@
+services:
+  ez-upload:
+    build: .
+    container_name: ez-upload
+    volumes:
+      - ./html:/var/www/html
+      - ./apache2.conf:/etc/apache2/apache2.conf
+      - ./php.ini:/usr/local/etc/php/php.ini
+    restart: unless-stopped

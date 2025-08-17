@@ -1,0 +1,7 @@
+version: '3'
+services:
+  ezupload:
+    build: .
+    environment:
+      - UWSGI_INI=/app/uwsgi.ini
+    restart: unless-stopped
