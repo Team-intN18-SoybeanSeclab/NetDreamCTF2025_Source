@@ -195,14 +195,11 @@ print(m)
 
 <h1 id="va6VE">Crypto </h1>
 <h2 id="nF4ak">Quaternion Lock  </h2>
-+ **求解离散对数**
-+ K 是在 Fₚ[i](形如 a + b·i)的子群内生成的，阶为 **subgroup_order = 60480**，该阶是平滑数，可以直接暴力枚举或使用 Pohlig-Hellman 算法求解。
-+ 计算出 r 使得 **h^(r * e) = Y**，从而求得 K = h^r。
-+ **计算 K⁻¹**
-+ 由于四元数的范数为非零数，其逆元可通过**四元数共轭除以范数**计算。
-+ **解密密文 X**
-+ 根据加密公式X=K⋅F⋅K−1
-+  只需计算F=K−1⋅X⋅K
+K 是在 Fₚ[i](形如 a + b·i)的子群内生成的，阶为 subgroup_order = 60480，该阶是平滑数，可以直接暴力枚举或使用 Pohlig-Hellman 算法求解。
+计算出 r 使得 *h^(r * e) = Y，从而求得 K = h^r。
+由于四元数的范数为非零数，其逆元可通过四元数共轭除以范数计算。
+根据加密公式X=K⋅F⋅K−1
+只需计算F=K−1⋅X⋅K
 
 ```python
 def qmul(q1, q2, p):
@@ -430,19 +427,7 @@ BOOL anti_debug()
 }
 ```
 
-根据这段，可知，此程序使用了以下方式来进行反调试
-
-`**IsDebuggerPresent()**`** —— 检测是否被调试**
-
-`**CheckRemoteDebuggerPresent()**`** —— 检测是否有远程调试器**
-
-`**NtQueryInformationProcess()**`** —— 检测 **`**ProcessDebugPort**`
-
-**调试寄存器 (**`**Dr0-Dr7**`**) 检测**
-
-**隐藏窗口 (**`**ShowWindow(SW_HIDE)**`**)**
-
-<h3 id="nWmpY">**解法1**</h3>
+<h3 id="nWmpY">解法1</h3>
 <font>直接nop掉anti_debug这个函数，动态调试后flag自显示</font>
 
 <font></font>
@@ -498,9 +483,6 @@ only fuzz(number)
 爆破一下路径，拿到<font style="color:#DF2A3F;">114514</font>
 
 <h3 id="qX7Tn">Step3</h3>
-```python
-你好 guest！
-```
 
 明显ssti注入，甚至手fuzz就能出，不过注释中有提示：
 
@@ -542,7 +524,7 @@ else{
 highlight_file(__FILE__);
 ```
 
-乍一看他把能过滤的都过滤了，其实漏掉了**<font style="color:#DF2A3F;">system</font>**和**<font style="color:#DF2A3F;">apache_request_headers</font>**
+乍一看他把能过滤的都过滤了，其实漏掉了<font style="color:#DF2A3F;">system</font>和<font style="color:#DF2A3F;">apache_request_headers</font>
 
 apache_request_headers这个函数有可能有点冷门，其实它是<font style="color:#DF2A3F;">getallheaders</font><font>的别名，详见</font>[php手册](https://www.php.net/manual/en/function.getallheaders.php)
 
